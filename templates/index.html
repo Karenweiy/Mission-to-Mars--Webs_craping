@@ -21,23 +21,23 @@
       <div class="col-md-12">
         <h1>Latest Mars News</h1><br>
         <h4>{{mars.news_title}}</h4>
-        <small>{{mars.news_p}}</small>
+        <small>{{mars.news_paragraph}}</small>
         <hr class="mars-hr"></hr>
       </div>      
     </div>
     <div class="row">
       <div class="col-md-8">
         <h2>Featured Mars Image</h2><br>
-        <img class="img-fluid" src="{{mars.featured_img_url}}">
+        <img class="img-fluid" src="{{mars.featured_image}}">
       </div>
       <div class="col-md-4">
         <div class="col-md-12 div-border div-h33">
         <h4>Current Mars Weather</h4>
-        <small>{{mars.mars_weather}}</small>
+        <small>{{mars.weather}}</small>
         </div>
         <div class="col-md-12 div-h67">
         <h4>Mars Facts</h4>
-        <small>{{mars.table_df|safe}}</small><br><br>
+        <small>{{mars.facts}}</small><br><br>
         </div>
       </div>      
     </div>
@@ -46,7 +46,7 @@
         <hr class="mars-hr">
         <h2>Mars Hemispheres</h2>
       </div>
-      {% for hemisphere in mars.hemisphere_image_urls %}
+      {% for hemisphere in mars.hemispheres %}
       <div class="col-md-6 div-border">
           <img class="img-fluid" src="{{hemisphere.img_url}}">
           <h4>{{hemisphere.title}}</h4>

@@ -23,9 +23,9 @@ def scraper():
     mars = mongo.db.mars
     mars_data = scrape_mars_2.scrape()
     mars.update({}, mars_data, upsert=True)
-    # return redirect("/", code=302)
+    return redirect("/", code=302)
     # return render_template("index.html", mars=mars)
-    return mars_data
+   
 
 if __name__ == "__main__":
     app.run(debug=True)

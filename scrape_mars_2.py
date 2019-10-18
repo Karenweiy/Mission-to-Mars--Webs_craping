@@ -14,10 +14,11 @@ from pprint import pprint
 
 
 def init_browser():
+    # executable_path = {"executable_path": "chromedriver.exe"}
     executable_path = {"executable_path": "chromedriver.exe"}
-
-    # driver = webdriver.Chrome(executable_path)
-    return Browser("chrome", **executable_path, headless=False)
+    driver = webdriver.Chrome(executable_path)
+    # return Browser("chrome", **executable_path, headless=False)
+    return Browser("chrome", **driver, headless=False)
 
 
 # In[6]:
@@ -56,7 +57,7 @@ def featured_image(browser):
     image_soup = BeautifulSoup(html, "html.parser")
         
      # find the relative image url
-    img_url_rel = image_soup.select_one('figure.lede a img').get("src")
+    img_url_rel = image_soup.select_one("img.main_image").get("src")
     img_url_rel
     featured_image_url = f"https://www.jpl.nasa.gov{img_url_rel}"
     print (featured_image_url)
@@ -90,8 +91,8 @@ def mars_facts(browser):
     print(table)
     table_df = pd.read_html(url_facts)[1]
     table_df.columns = ["Description", "Facts"]
-    table_df
-    return table_df
+    table_df.set_index("Description", inplace = True)
+    return table_df.to_html()
     
 
     # In[104]:
